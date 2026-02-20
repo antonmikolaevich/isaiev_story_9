@@ -4,6 +4,8 @@ import { BasePage } from './BasePage';
 export class CalculatorPage extends BasePage {
   // Locators - Playwright locators are lazy and don't need await
   private readonly addToEstimateButton: Locator;
+  // Mobile-specific: button role selector for proper touch target on narrow viewports
+  private readonly mobileAddToEstimateButton: Locator;
   private readonly estimationModal: Locator;
   private readonly computeEngineOption: Locator;
   private readonly configurationSection: Locator;
@@ -24,6 +26,8 @@ export class CalculatorPage extends BasePage {
     // Initialize locators using Playwright's best practices
     // Use .first() to handle multiple matching elements
     this.addToEstimateButton = page.locator('span', { hasText: 'Add to estimate' }).first();
+    // Mobile: target the button element directly for a proper touch target
+    this.mobileAddToEstimateButton = page.getByRole('button', { name: /add to estimate/i }).first();
     this.estimationModal = page.locator('[aria-label="Add to this estimate"]');
     this.computeEngineOption = page.locator('h2', { hasText: 'Compute Engine' });
     // Use semantic text-based selector instead of brittle class names
@@ -54,7 +58,12 @@ export class CalculatorPage extends BasePage {
 
   // Actions - Playwright auto-waits, no explicit waits needed
   async clickAddToEstimate(): Promise<void> {
-    await this.addToEstimateButton.click();
+    // On mobile, use the button role locator for a reliable touch target
+    if (this.isMobile) {
+      await this.mobileAddToEstimateButton.click();
+    } else {
+      await this.addToEstimateButton.click();
+    }
   }
 
   async waitForEstimationModal(): Promise<void> {

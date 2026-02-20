@@ -88,17 +88,23 @@ export default defineConfig({
       },
     },
 
-    // Uncomment to test on Firefox
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    // Mobile: iPhone 15 Pro (WebKit / Mobile Safari)
+    {
+      name: 'Mobile Safari - iPhone 15 Pro',
+      testIgnore: ['**/visual/**', '**/sample/**'],
+      use: {
+        ...devices['iPhone 15 Pro'],
+      },
+    },
 
-    // Uncomment to test on WebKit
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    // Tablet: iPad Pro 11 (WebKit / Mobile Safari)
+    {
+      name: 'Mobile Safari - iPad Pro',
+      testIgnore: ['**/visual/**', '**/sample/**'],
+      use: {
+        ...devices['iPad Pro 11'],
+      },
+    },
   ],
 
   // Global setup/teardown

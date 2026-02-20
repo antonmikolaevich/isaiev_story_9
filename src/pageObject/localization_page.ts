@@ -16,6 +16,8 @@ export class LocalizationPage extends BasePage {
   }
 
   async verifyHeaderContains(text: string): Promise<void> {
+    // On mobile the navigation is collapsed behind a hamburger menu; open it first
+    await this.openMobileMenuIfNeeded();
     await expect(this.pageHeader).toContainText(text);
   }
 
