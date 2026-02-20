@@ -9,7 +9,7 @@
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug",
     "test:smoke": "playwright test src/tests/smoke",
-    "test:mobile": "playwright test --project='Mobile Safari - iPhone 15 Pro' --project='Mobile Safari - iPad Pro'",
+    "test:mobile": "playwright test --project=\"Mobile Safari - iPhone 15 Pro\" --project=\"Mobile Safari - iPad Pro\"",
     "test:visual": "playwright test src/tests/visual",
     "test:visual:update": "playwright test src/tests/visual --update-snapshots",
     "report": "playwright show-report",
