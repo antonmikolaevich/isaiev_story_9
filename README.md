@@ -5,6 +5,7 @@
 
 # ATM JS Intermediate - Test Automation with Playwright
 
+
 ## Overview
 
 This project demonstrates modern test automation practices using **Playwright Test** framework. The test automation framework follows industry best practices including Page Object Model pattern, TypeScript for type safety, and comprehensive test coverage.
